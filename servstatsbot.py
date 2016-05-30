@@ -105,6 +105,14 @@ class YourBot(telepot.Bot):
                             diskused + "\n\n" + \
                             pidsreply
                     bot.sendMessage(chat_id, reply, disable_web_page_preview=True)
+                elif msg['text'] == "/help":
+                    replyhelp = "/stats - gives summed statistics about memory \ disk \ processes (will improve)" + "\n" + \
+                            "/shell - goes into the mode of executing shell commands & sends you the output" + "\n" + \
+                            "/memgraph - plots a graph of memory usage for a past period and sends you a picture of the graph" + "\n" + \
+                            "/setmem - set memory threshold (%) to monitor and notify if memory usage goes above it" + "\n" + \
+                            "/setpoll - set polling interval in seconds (higher than 10)" + "\n" + \
+                            "Monitors memory usage and if it reaches above the set threshold = sends you warning message"
+                    bot.sendMessage(chat_id, replyhelp, disable_web_page_preview=True)
                 elif msg['text'] == "Stop":
                     clearall(chat_id)
                     bot.sendMessage(chat_id, "All operations stopped.", reply_markup=hide_keyboard)
